@@ -3,4 +3,7 @@ nltk
 scikit-learn
 pickle5
 tensorflow
-mnist
+Pillow
+opencv-python
+streamlit
+altair==4.1.0

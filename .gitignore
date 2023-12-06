@@ -3,3 +3,4 @@
 /emotions_dataset_for_nlp
 .DS_Store
 emotion_detection_dataset/.DS_Store
+*.jpg
