@@ -23,10 +23,7 @@ Text Sentiment Analysis:
 Facial Emotion Detection:
   - [```python3 face_emotion_detection.py```](face_emotion_detection.py)
 
-
-
-
-The databases used to train these models and their licenses are as follow:
+## Databases
 
 #### Text Sentiment Analysis
 ["Emotions dataset for NLP"](https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp) by Praveen Govi, used under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
