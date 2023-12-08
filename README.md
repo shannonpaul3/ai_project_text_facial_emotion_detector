@@ -1,6 +1,8 @@
 ## Description
 This project combines a text sentiment analysis model with a facial emotion detection model to predict the overall tone of a text message.
 
+[https://detect-my-tone.streamlit.app/](https://detect-my-tone.streamlit.app/)
+
 The databases used to train these models and their licenses are as follow:
 
 #### Text Sentiment Analysis
