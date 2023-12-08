@@ -26,17 +26,19 @@ validation_labels = validation_data[:, 1]
 testing_samples = testing_data[:, 0]
 testing_labels = testing_data[:, 1]
 
-
+# Feature Extraction: Bag of Words model
 # generate 1-gram (unigram) models
 vectorizer = CountVectorizer(ngram_range=(1, 1))
-X_train = vectorizer.fit_transform(training_samples)
+
+# Count Vectors
+X_train = vectorizer.fit_transform(training_samples)  # fit learns vocabulary
 X_val = vectorizer.transform(validation_samples)
 X_test = vectorizer.transform(testing_samples)
 
 
 # encode labels
 le = LabelEncoder()
-y_train = le.fit_transform(training_labels)
+y_train = le.fit_transform(training_labels)  # fit maps label to numerical value
 y_val = le.transform(validation_labels)
 y_test = le.transform(testing_labels)
 

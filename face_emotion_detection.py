@@ -8,7 +8,7 @@ from keras.utils import to_categorical
 from keras.preprocessing.image import ImageDataGenerator
 from keras.optimizers.legacy import Adam
 
-# Set up the ImageDataGenerators for training and testing
+# training and testing sets
 train_datagen = ImageDataGenerator(rescale=1.0 / 255)
 test_datagen = ImageDataGenerator(rescale=1.0 / 255)
 
@@ -29,10 +29,10 @@ test_generator = test_datagen.flow_from_directory(
     class_mode="categorical",
 )
 
-num_filters = 8
+num_filters = 8  # feature extraction (notice patterns)
 filter_size = 3
-pool_size = 2
-num_classes = 7  # You have 7 emotions
+pool_size = 2  # reduce features by 2
+num_classes = 7  # 7 emotions
 
 # Build the model.
 model = Sequential(
@@ -40,19 +40,19 @@ model = Sequential(
         Conv2D(num_filters, filter_size, input_shape=(48, 48, 1)),
         MaxPooling2D(pool_size=pool_size),
         Flatten(),
-        Dense(128, activation="relu"),  # Added a dense layer for better performance
-        Dense(num_classes, activation="softmax"),
+        Dense(128, activation="relu"),  # hidden layer
+        Dense(num_classes, activation="softmax"),  # output layer
     ]
 )
 
-# Compile the model.
+# compile model
 model.compile(
-    optimizer=Adam(learning_rate=0.001),  # You can adjust the learning rate as needed
+    optimizer=Adam(learning_rate=0.001),  # learning rate algorithm
     loss="categorical_crossentropy",
     metrics=["accuracy", "Precision", "Recall"],
 )
 
-# Train the model using the generators
+# train model
 model.fit(
     train_generator,
     steps_per_epoch=train_generator.samples // train_generator.batch_size,
@@ -61,10 +61,10 @@ model.fit(
     validation_steps=test_generator.samples // test_generator.batch_size,
 )
 
-# Save the model
+# save model
 model.save("face_emotion_detection_model.keras")
 
-# Evaluate the model on the test set
+# evaluate the model
 test_loss, test_accuracy, test_precision, test_recall = model.evaluate(
     test_generator, steps=test_generator.samples // test_generator.batch_size
 )

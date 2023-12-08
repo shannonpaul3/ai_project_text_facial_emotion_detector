@@ -53,7 +53,11 @@ cv2.destroyAllWindows()
 model = load_model("face_emotion_detection_model.keras")
 
 # Load and preprocess the new photo
-photo = load_img("input_image.jpg", color_mode="grayscale", target_size=(48, 48))
+photo = load_img(
+    "input_image",
+    color_mode="grayscale",
+    target_size=(48, 48),
+)
 photo = img_to_array(photo)
 photo = np.expand_dims(photo, axis=0)  # Add batch dimension
 photo /= 255.0  # Normalize pixel values
@@ -61,7 +65,7 @@ photo /= 255.0  # Normalize pixel values
 # Predict the emotion
 predictions = model.predict(photo)
 
-# Assuming your model's output layer uses softmax activation, predictions will be a list of probabilities
+# Predictions will be a list of probabilities
 emotion_probability = np.max(predictions)
 emotion_index = np.argmax(predictions)
 emotions = [
